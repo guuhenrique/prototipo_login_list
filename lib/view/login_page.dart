@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prototipo_login_list/core/app_colors.dart';
 import 'package:prototipo_login_list/view/list_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -9,15 +10,15 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: AppColors.lightBlueApp,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.article_outlined, size: 100, color: Colors.white30,),
+          Icon(Icons.article_outlined, size: 100, color: AppColors.darkBlueApp,),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.blueGrey,
+              color: AppColors.backTextField,
             ),
             margin: EdgeInsets.only(top: 45, left: 20, right: 20, bottom: 10),
             padding: EdgeInsets.all(8),
@@ -29,10 +30,10 @@ class LoginPage extends StatelessWidget {
                   icon: Icon(Icons.account_circle_outlined),
                   hintText: "Usuario",
                   labelStyle: TextStyle(
-                      color: Colors.white70,)),
+                      color: AppColors.backTextField,)),
               style: TextStyle(
                 color: Colors.black,
-                backgroundColor: Colors.blueGrey,
+                backgroundColor: AppColors.backTextField,
               ),
               onChanged: (text){
                 _usuario = text;
@@ -46,7 +47,7 @@ class LoginPage extends StatelessWidget {
             height: 45,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.blueGrey,
+              color: AppColors.backTextField,
             ),
             child: TextField(
               //cursorColor: Colors.black,
@@ -60,11 +61,11 @@ class LoginPage extends StatelessWidget {
                   hintText: "Senha",
                   labelStyle: TextStyle(
                       color: Colors.white70,
-                      backgroundColor: Colors.blueGrey)
+                      backgroundColor: AppColors.backTextField)
               ),
               style: TextStyle(
                 color: Colors.black,
-                backgroundColor: Colors.blueGrey,
+                backgroundColor: AppColors.backTextField,
               ),
               onChanged: (s){
                 _senha = s;
@@ -79,7 +80,7 @@ class LoginPage extends StatelessWidget {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.deepPurple,
+                color: AppColors.darkBlueApp,
                 border: Border.fromBorderSide(BorderSide(
                   color: Colors.black87,
                 )),
@@ -90,7 +91,7 @@ class LoginPage extends StatelessWidget {
                   child: Text(
                     "Login",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.lightBlueApp,
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),

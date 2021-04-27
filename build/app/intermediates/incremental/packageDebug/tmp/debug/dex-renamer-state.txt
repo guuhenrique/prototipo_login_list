@@ -1,4 +1,4 @@
-#Mon Apr 26 18:31:41 BRT 2021
+#Tue Apr 27 09:51:53 BRT 2021
 base.0=D\:\\AndroidStudioProjects\\prototipo_login_list\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prototipo_login_list/core/app_colors.dart';
 import 'package:prototipo_login_list/model/colab_model.dart';
 
 class ListPage extends StatefulWidget {
@@ -17,11 +18,11 @@ class _ListPageState extends State<ListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Lista"),
-        backgroundColor: Colors.deepPurpleAccent,
+        title: Text("Colaboradores"),
+        backgroundColor: AppColors.darkBlueApp,
       ),
       body: Container(
-        color: Colors.deepPurple,
+        color: AppColors.lightBlueApp,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Expanded(child: ListView.builder(
@@ -32,7 +33,7 @@ class _ListPageState extends State<ListPage> {
               subtitle: Text(colab[index].cargo),
               leading: colab[index].icon,
               trailing: Text(colab[index].local),
-              tileColor: Colors.deepPurple,
+              tileColor: AppColors.lightBlueApp,
               selectedTileColor: Colors.deepPurpleAccent,
 
             );
