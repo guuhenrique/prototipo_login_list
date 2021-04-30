@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:prototipo_login_list/blocs/lista_bloc.dart';
 import 'package:prototipo_login_list/core/app_colors.dart';
 import 'package:prototipo_login_list/model/colab_model.dart';
+import 'package:prototipo_login_list/routes/app_routes.dart';
+import 'package:provider/provider.dart';
 
 class ColabTile extends StatelessWidget {
   final ColabModel colab;
@@ -29,8 +32,29 @@ class ColabTile extends StatelessWidget {
                     IconButton(
                         color: Colors.black26,
                         icon: Icon(Icons.edit),
-                        onPressed: () {}),
-                    IconButton(icon: Icon(Icons.delete), onPressed: () {}),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(AppRoutes.COLAB_CRUD,
+                          arguments: colab);
+                        }),
+                    IconButton(icon: Icon(Icons.delete), onPressed: () {
+                      showDialog(context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text('Excluir Colaborador'),
+                            content: Text('Tem Certeza?'),
+                            actions: [
+                              TextButton(onPressed: (){
+                                Provider.of<ColabsProvider>(context, listen: false).remove(colab);
+                                Navigator.of(context).pop();
+                              },
+                                  child: Text('SIM')),
+                              TextButton(
+                                  onPressed: (){
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('NÃO'))
+                            ],
+                          ));
+                    }),
                   ],
                 ),
               ),

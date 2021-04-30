@@ -23,7 +23,7 @@ class ColabsProvider with ChangeNotifier{
       return;
     }
 
-    if(colab.id != null && colab.id.trim().isEmpty && _items.containsKey(colab.id)){
+    if(colab.id != null && colab.id.trim().isNotEmpty && _items.containsKey(colab.id)){
       _items.update(colab.id, (_) => ColabModel(
           colab.id,
           colab.nome,
