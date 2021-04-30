@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prototipo_login_list/blocs/lista_bloc.dart';
 import 'package:prototipo_login_list/core/app_colors.dart';
+import 'package:prototipo_login_list/providers/lista_provider.dart';
 import 'package:prototipo_login_list/routes/app_routes.dart';
 import 'package:prototipo_login_list/widgets_model/colab_tile.dart';
 import 'package:provider/provider.dart';

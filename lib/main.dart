@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prototipo_login_list/blocs/lista_bloc.dart';
+import 'package:prototipo_login_list/providers/lista_provider.dart';
 import 'package:prototipo_login_list/routes/app_routes.dart';
 import 'package:prototipo_login_list/view/colab_crud.dart';
 import 'package:prototipo_login_list/view/list_page.dart';

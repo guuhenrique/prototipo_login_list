@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:prototipo_login_list/blocs/lista_bloc.dart';
+import 'package:prototipo_login_list/core/app_colors.dart';
 import 'package:prototipo_login_list/model/colab_model.dart';
+import 'package:prototipo_login_list/providers/lista_provider.dart';
 import 'package:provider/provider.dart';
 
 class ColabCRUD extends StatefulWidget {
@@ -34,6 +35,7 @@ class _ColabCRUDState extends State<ColabCRUD> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.darkBlueApp,
         title: Text('Formulário de Usuário'),
         actions: [
           IconButton(
@@ -55,38 +57,41 @@ class _ColabCRUDState extends State<ColabCRUD> {
               })
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(15),
-        child: Form(
-          key: _form,
-          child: Column(
-            children: [
-              TextFormField(
-                initialValue: _formData['nome'],
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Nome Inválido';
-                  }
-                  if (value.trim().length < 3) {
-                    // ignore: missing_return
-                    return 'Nome muito pequeno. Min 3 letras';
-                  }
-                  return null;
-                },
-                onSaved: (value) => _formData['nome'] = value,
-                decoration: InputDecoration(labelText: 'Nome'),
-              ),
-              TextFormField(
-                initialValue: _formData['cargo'],
-                onSaved: (value) => _formData['cargo'] = value,
-                decoration: InputDecoration(labelText: 'Cargo'),
-              ),
-              TextFormField(
-                initialValue: _formData['local'],
-                onSaved: (value) => _formData['local'] = value,
-                decoration: InputDecoration(labelText: 'Local'),
-              ),
-            ],
+      body: Container(
+        color: AppColors.lightBlueApp,
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Form(
+            key: _form,
+            child: Column(
+              children: [
+                TextFormField(
+                  initialValue: _formData['nome'],
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Nome Inválido';
+                    }
+                    if (value.trim().length < 3) {
+                      // ignore: missing_return
+                      return 'Nome muito pequeno. Min 3 letras';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => _formData['nome'] = value,
+                  decoration: InputDecoration(labelText: 'Nome'),
+                ),
+                TextFormField(
+                  initialValue: _formData['cargo'],
+                  onSaved: (value) => _formData['cargo'] = value,
+                  decoration: InputDecoration(labelText: 'Cargo'),
+                ),
+                TextFormField(
+                  initialValue: _formData['local'],
+                  onSaved: (value) => _formData['local'] = value,
+                  decoration: InputDecoration(labelText: 'Local'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
