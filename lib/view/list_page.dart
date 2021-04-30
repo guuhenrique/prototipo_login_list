@@ -1,45 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:prototipo_login_list/blocs/lista_bloc.dart';
 import 'package:prototipo_login_list/core/app_colors.dart';
-import 'package:prototipo_login_list/model/colab_model.dart';
+import 'package:prototipo_login_list/routes/app_routes.dart';
+import 'package:prototipo_login_list/widgets_model/colab_tile.dart';
+import 'package:provider/provider.dart';
 
-class ListPage extends StatefulWidget {
-  @override
-  _ListPageState createState() => _ListPageState();
-}
-
-class _ListPageState extends State<ListPage> {
-  List<ColabModel> colab =[
-    ColabModel("Igor","CEO","Toodoo SP",Icon(Icons.account_box_outlined)),
-    ColabModel("Thiago", "CPO", "Toodoo SP",Icon(Icons.account_box_outlined)),
-    ColabModel("Gustavo", "Trainee", "Toodoo MG",Icon(Icons.account_box_outlined))
-  ];
-
+class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Colaboradores"),
-        backgroundColor: AppColors.darkBlueApp,
-      ),
-      body: Container(
-        color: AppColors.lightBlueApp,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Expanded(child: ListView.builder(
-              itemCount: colab.length,
-              itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(colab[index].nome, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black54),),
-              subtitle: Text(colab[index].cargo),
-              leading: colab[index].icon,
-              trailing: Text(colab[index].local),
-              tileColor: AppColors.lightBlueApp,
-              selectedTileColor: Colors.deepPurpleAccent,
+    final ColabsProvider colabs = Provider.of(context);
 
-            );
-          })),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Colaboradores"),
+          backgroundColor: AppColors.darkBlueApp,
+          actions: [
+            IconButton(
+                iconSize: 30,
+                icon: Icon(Icons.add_box_outlined),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AppRoutes.COLAB_CRUD);
+                })
+          ],
         ),
-      ),
-    );
+        body: Container(
+            color: AppColors.lightBlueApp,
+            child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: ListView.builder(
+                  itemCount: colabs.count,
+                  itemBuilder: (context, i) => ColabTile(colabs.byIndex(i)),
+                ))));
   }
 }

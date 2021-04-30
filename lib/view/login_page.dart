@@ -14,7 +14,9 @@ class LoginPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          //ICON
           Icon(Icons.article_outlined, size: 100, color: AppColors.darkBlueApp,),
+          //USER
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -33,7 +35,7 @@ class LoginPage extends StatelessWidget {
                       color: AppColors.backTextField,)),
               style: TextStyle(
                 color: Colors.black,
-                backgroundColor: AppColors.backTextField,
+                //backgroundColor: AppColors.backTextField,
               ),
               onChanged: (text){
                 _usuario = text;
@@ -41,6 +43,7 @@ class LoginPage extends StatelessWidget {
               },
             ),
           ),
+          //PASSWORD
           Container(
             margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
             padding: EdgeInsets.all(8),
@@ -65,13 +68,14 @@ class LoginPage extends StatelessWidget {
               ),
               style: TextStyle(
                 color: Colors.black,
-                backgroundColor: AppColors.backTextField,
+                //backgroundColor: AppColors.backTextField,
               ),
               onChanged: (s){
                 _senha = s;
               },
             ),
           ),
+          //LOGIN
           GestureDetector(
             onTap: () {
               print(_usuario + _senha);

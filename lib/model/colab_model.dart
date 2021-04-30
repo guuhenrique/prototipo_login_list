@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 
 class ColabModel {
-   String _nome;
-   String _cargo;
-   String _local;
-   Icon _icon;
+   final String id;
+   final String nome;
+   final String cargo;
+   final String local;
+   final String icon;
 
-   ColabModel(this._nome, this._cargo, this._local, this._icon);
+   ColabModel(this.id, this.nome, this.cargo, this.local, [this.icon]);
 
-   String get nome => _nome;
-
-   String get cargo => _cargo;
-
-   String get local => _local;
-
-   Icon get icon => _icon;
-
+   // String get id => _id;
+   //
+   // String get nome => _nome;
+   //
+   // String get cargo => _cargo;
+   //
+   // String get local => _local;
+   //
+   // String get icon => _icon;
 
 
 }
