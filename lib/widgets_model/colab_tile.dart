@@ -15,6 +15,11 @@ class ColabTile extends StatelessWidget {
         ? CircleAvatar(child: Icon(Icons.person))
         : CircleAvatar(backgroundImage: NetworkImage(colab.icon));
     return ListTile(
+      onTap: (){
+        Navigator.of(context).pushNamed(AppRoutes.TAREFA_PAGE,
+            arguments: colab);
+
+      },
               leading: icon,
               title: Text(
                 '${colab.nome} - ${colab.cargo}',

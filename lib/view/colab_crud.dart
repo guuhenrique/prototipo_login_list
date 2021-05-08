@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prototipo_login_list/core/app_colors.dart';
 import 'package:prototipo_login_list/model/colab_model.dart';
+import 'package:prototipo_login_list/model/tarefa_model.dart';
 import 'package:prototipo_login_list/providers/lista_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -12,14 +13,15 @@ class ColabCRUD extends StatefulWidget {
 class _ColabCRUDState extends State<ColabCRUD> {
   final _form = GlobalKey<FormState>();
 
-  final Map<String, String> _formData = {};
+  final Map<dynamic, dynamic> _formData = {};
 
   void _loadFormData(ColabModel colab) {
-    if(colab != null) {
+    if (colab != null) {
       _formData['id'] = colab.id;
       _formData['nome'] = colab.nome;
       _formData['cargo'] = colab.cargo;
       _formData['local'] = colab.local;
+      _formData['tarefas'] = colab.tarefas;
     }
   }
 
@@ -28,7 +30,6 @@ class _ColabCRUDState extends State<ColabCRUD> {
     super.didChangeDependencies();
     final ColabModel colab = ModalRoute.of(context).settings.arguments;
     _loadFormData(colab);
-
   }
 
   @override
@@ -45,11 +46,20 @@ class _ColabCRUDState extends State<ColabCRUD> {
 
                 if (isValid) {
                   _form.currentState.save();
-                  Provider.of<ColabsProvider>(context, listen: false).put(ColabModel(
+                  Provider.of<ColabsProvider>(context, listen: false)
+                      .put(ColabModel(
                     _formData['id'],
                     _formData['nome'],
                     _formData['cargo'],
                     _formData['local'],
+                    // _formData['tarefas']
+                    [
+                      TarefaModel(
+                          id: 1,
+                          titulo: 'sei la',
+                          descricao: 'aaaa',
+                          status: false)
+                    ],
                   ));
 
                   Navigator.of(context).pop();
@@ -65,8 +75,37 @@ class _ColabCRUDState extends State<ColabCRUD> {
             key: _form,
             child: Column(
               children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColors.backTextField,
+                  ),
+                  margin:
+                      EdgeInsets.only(top: 45, left: 20, right: 20, bottom: 10),
+                  padding: EdgeInsets.all(8),
+                  height: 45,
+                  child: TextFormField(
+                    initialValue: _formData['nome'],
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Nome Inválido';
+                      }
+                      if (value.trim().length < 3) {
+                        // ignore: missing_return
+                        return 'Nome muito pequeno. Min 3 letras';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _formData['nome'] = value,
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.account_circle_outlined),
+                        hintText: "Usuario",
+                        labelStyle: TextStyle(
+                          color: AppColors.backTextField,
+                        )),
+                  ),
+                ),
                 TextFormField(
-                  initialValue: _formData['nome'],
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Nome Inválido';
@@ -77,10 +116,6 @@ class _ColabCRUDState extends State<ColabCRUD> {
                     }
                     return null;
                   },
-                  onSaved: (value) => _formData['nome'] = value,
-                  decoration: InputDecoration(labelText: 'Nome'),
-                ),
-                TextFormField(
                   initialValue: _formData['cargo'],
                   onSaved: (value) => _formData['cargo'] = value,
                   decoration: InputDecoration(labelText: 'Cargo'),

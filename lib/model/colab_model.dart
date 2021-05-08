@@ -1,23 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:prototipo_login_list/model/tarefa_model.dart';
 
 class ColabModel {
    final String id;
    final String nome;
    final String cargo;
    final String local;
+   final List<TarefaModel> tarefas;
    final String icon;
 
-   ColabModel(this.id, this.nome, this.cargo, this.local, [this.icon]);
-
-   // String get id => _id;
-   //
-   // String get nome => _nome;
-   //
-   // String get cargo => _cargo;
-   //
-   // String get local => _local;
-   //
-   // String get icon => _icon;
-
+   ColabModel(this.id, this.nome, this.cargo, this.local, this.tarefas, [this.icon]);
 
 }

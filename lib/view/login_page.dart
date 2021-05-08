@@ -3,7 +3,6 @@ import 'package:prototipo_login_list/core/app_colors.dart';
 import 'package:prototipo_login_list/view/list_page.dart';
 
 class LoginPage extends StatelessWidget {
-
   String _usuario = "";
   String _senha = "";
 
@@ -15,7 +14,11 @@ class LoginPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //ICON
-          Icon(Icons.article_outlined, size: 100, color: AppColors.darkBlueApp,),
+          Icon(
+            Icons.article_outlined,
+            size: 100,
+            color: AppColors.darkBlueApp,
+          ),
           //USER
           Container(
             decoration: BoxDecoration(
@@ -24,7 +27,6 @@ class LoginPage extends StatelessWidget {
             ),
             margin: EdgeInsets.only(top: 45, left: 20, right: 20, bottom: 10),
             padding: EdgeInsets.all(8),
-
             height: 45,
             child: TextField(
               //cursorColor: Colors.white,
@@ -32,12 +34,13 @@ class LoginPage extends StatelessWidget {
                   icon: Icon(Icons.account_circle_outlined),
                   hintText: "Usuario",
                   labelStyle: TextStyle(
-                      color: AppColors.backTextField,)),
+                    color: AppColors.backTextField,
+                  )),
               style: TextStyle(
                 color: Colors.black,
                 //backgroundColor: AppColors.backTextField,
               ),
-              onChanged: (text){
+              onChanged: (text) {
                 _usuario = text;
                 print(_usuario);
               },
@@ -60,17 +63,16 @@ class LoginPage extends StatelessWidget {
               decoration: InputDecoration(
                   //border: InputBorder.none,
                   //focusedBorder: InputBorder.none,
-                icon: Icon(Icons.vpn_key_outlined),
+                  icon: Icon(Icons.vpn_key_outlined),
                   hintText: "Senha",
                   labelStyle: TextStyle(
                       color: Colors.white70,
-                      backgroundColor: AppColors.backTextField)
-              ),
+                      backgroundColor: AppColors.backTextField)),
               style: TextStyle(
                 color: Colors.black,
                 //backgroundColor: AppColors.backTextField,
               ),
-              onChanged: (s){
+              onChanged: (s) {
                 _senha = s;
               },
             ),

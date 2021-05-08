@@ -4,7 +4,9 @@ import 'package:prototipo_login_list/data/dummy_colabs.dart';
 import 'package:prototipo_login_list/model/colab_model.dart';
 
 class ColabsProvider with ChangeNotifier{
+
   final Map<String, ColabModel> _items = {...COLABS};
+  //final Map<ColabModel, List <TarefaModel>> _tarefas = {...DATA_TAREFAS};
 
   List<ColabModel> get all{
     return[..._items.values];
@@ -14,6 +16,16 @@ class ColabsProvider with ChangeNotifier{
     return _items.length;
   }
 
+  int countTarefas(ColabModel colab){
+    return colab.tarefas.length;
+  }
+
+  // TarefaModel tarefaByIndex( int i, ColabModel colab ){
+  //   return _tarefas.values.elementAt(i);
+  // }
+
+  //itera em um map de string, colabModel
+  //retorna cada objeto do map
   ColabModel byIndex(int i){
     return _items.values.elementAt(i);
   }
@@ -28,7 +40,8 @@ class ColabsProvider with ChangeNotifier{
           colab.id,
           colab.nome,
           colab.cargo,
-          colab.local)
+          colab.local,
+          colab.tarefas)
       );
     }else{
       final id = Random().nextDouble().toString();
@@ -36,7 +49,9 @@ class ColabsProvider with ChangeNotifier{
           id,
           colab.nome,
           colab.cargo,
-          colab.local));
+          colab.local,
+          colab.tarefas
+      ));
     }
 
     notifyListeners();
