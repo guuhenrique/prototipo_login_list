@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prototipo_login_list/core/app_colors.dart';
 import 'package:prototipo_login_list/model/colab_model.dart';
-import 'package:prototipo_login_list/model/tarefa_model.dart';
 import 'package:prototipo_login_list/providers/lista_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +20,7 @@ class _ColabCRUDState extends State<ColabCRUD> {
       _formData['nome'] = colab.nome;
       _formData['cargo'] = colab.cargo;
       _formData['local'] = colab.local;
-      _formData['tarefas'] = colab.tarefas;
+      ;
     }
   }
 
@@ -52,14 +51,6 @@ class _ColabCRUDState extends State<ColabCRUD> {
                     _formData['nome'],
                     _formData['cargo'],
                     _formData['local'],
-                    // _formData['tarefas']
-                    [
-                      TarefaModel(
-                          id: 1,
-                          titulo: 'sei la',
-                          descricao: 'aaaa',
-                          status: false)
-                    ],
                   ));
 
                   Navigator.of(context).pop();

@@ -1,4 +1,4 @@
-#Thu May 06 11:20:43 BRT 2021
-base.0=D\:\\AndroidStudioProjects\\prototipo_login_list\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-path.0=classes.dex
+#Mon May 31 11:10:12 BRT 2021
+base.0=D\:\\Ddocumentos\\flutterprojects\\prototipo_login_list\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
+path.0=classes.dex
